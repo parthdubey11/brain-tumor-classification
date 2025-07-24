@@ -9,7 +9,7 @@ import gdown
 
 
 if not os.path.exists("resnet_model.h5"):
-    url = "https://drive.google.com/file/d/1r4ArHOeihZCJ5FDtwDS3uWjtCoPvFsQT/view?usp=drive_link"  
+    url = "https://drive.google.com/uc?id=1r4ArHOeihZCJ5FDtwDS3uWjtCoPvFsQT"  
     gdown.download(url, "resnet_model.h5", quiet=False)
     
 model = load_model("resnet_model.h5")
