@@ -4,5 +4,4 @@ numpy
 matplotlib
 scikit-learn
 opencv-python
-tensorflow
-joblib
+tensorflow==2.12.0
