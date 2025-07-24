@@ -4,8 +4,15 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
 
-# Load the trained model
-model = load_model('resnet_model.h5')  # Replace with your model filename
+import os
+import gdown  
+
+
+if not os.path.exists("resnet_model.h5"):
+    url = "https://drive.google.com/file/d/1r4ArHOeihZCJ5FDtwDS3uWjtCoPvFsQT/view?usp=drive_link"  
+    gdown.download(url, "resnet_model.h5", quiet=False)
+    
+model = load_model("resnet_model.h5")
 
 # Class labels
 class_names = ['Glioma', 'Meningioma', 'No Tumor', 'Pituitary']
