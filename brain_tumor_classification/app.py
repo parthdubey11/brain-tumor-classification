@@ -3,11 +3,20 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
+import os
 
 
 
-    
-model = load_model("resnet_model.h5")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "resnet_model.h5")
+
+@st.cache_resource  # cache model so it doesn't reload on every run
+def load_brain_tumor_model():
+    if not os.path.exists(MODEL_PATH):
+        st.error("❌ Model file 'resnet_model.h5' not found. Please add it to the project folder.")
+        return None
+    return load_model(MODEL_PATH)
+
+model = load_brain_tumor_model()
 
 # Class labels
 class_names = ['Glioma', 'Meningioma', 'No Tumor', 'Pituitary']
